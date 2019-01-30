@@ -136,9 +136,10 @@ def loop():
     #     if msgID != expectedMsgId:
     #         expectedMsgId = C.POLL_ACK
             transmitPoll()
-            # return
-    #     if msgID == C.POLL_ACK:
-    #         timePollAckReceivedTS = DW1000.getReceiveTimestamp()
+            return
+        if msgID == C.POLL_ACK:
+            print ("POLLACK Rcved")
+            # timePollAckReceivedTS = DW1000.getReceiveTimestamp()
     #         expectedMsgId = C.RANGE_REPORT
     #         # transmit RANGE
     #         transmitRange()

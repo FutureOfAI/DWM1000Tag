@@ -117,15 +117,17 @@ def loop():
     #         resetInactive()
     #     return
 
-    # if sentAck:
+    if sentAck:
     #     print ("Sented")
-        # sentAck = False
-        # msgID = data[0]      
-        # if msgID == C.POLL:
-        #     timePollSentTS = DW1000.getTransmitTimestamp()
-        # elif msgID == C.RANGE:
-        #     timeRangeSentTS = DW1000.getTransmitTimestamp()
-        #     noteActivity()
+        sentAck = False
+        msgID = data[0]
+        if msgID == C.POLL:
+            print ("POLL Sented")
+            timePollSentTS = DW1000.getTransmitTimestamp()
+        elif msgID == C.RANGE:
+            print ("RANGE Sented")
+            timeRangeSentTS = DW1000.getTransmitTimestamp()
+            noteActivity()
 
     if receivedAck:
         receivedAck = False
@@ -144,8 +146,8 @@ def loop():
             # transmit RANGE
             transmitRange()
             noteActivity()
-        elif msgID == C.RANGE_REPORT:
-            print ("Ranging Finished")
+        # elif msgID == C.RANGE_REPORT:
+        #     print ("Rang Finished")
     #         expectedMsgId = C.POLL_ACK
     #         # transmit POLL
     #         transmitPoll()

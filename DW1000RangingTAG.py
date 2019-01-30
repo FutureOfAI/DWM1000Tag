@@ -118,37 +118,38 @@ def loop():
         return
 
     if sentAck:
-        sentAck = False
-        msgID = data[0]      
-        if msgID == C.POLL:
-            timePollSentTS = DW1000.getTransmitTimestamp()
-        elif msgID == C.RANGE:
-            timeRangeSentTS = DW1000.getTransmitTimestamp()
-            noteActivity()
+        print ("Sented")
+        # sentAck = False
+        # msgID = data[0]      
+        # if msgID == C.POLL:
+        #     timePollSentTS = DW1000.getTransmitTimestamp()
+        # elif msgID == C.RANGE:
+        #     timeRangeSentTS = DW1000.getTransmitTimestamp()
+        #     noteActivity()
 
-    if receivedAck:
-        receivedAck = False
-        data = DW1000.getData(LEN_DATA)
-        msgID = data[0]    
-        if msgID != expectedMsgId:
-            expectedMsgId = C.POLL_ACK
-            transmitPoll()
-            return
-        if msgID == C.POLL_ACK:
-            timePollAckReceivedTS = DW1000.getReceiveTimestamp()
-            expectedMsgId = C.RANGE_REPORT
-            # transmit RANGE
-            transmitRange()
-            noteActivity()
-        elif msgID == C.RANGE_REPORT:
-            expectedMsgId = C.POLL_ACK
-            # transmit POLL
-            transmitPoll()
-            noteActivity()
-        elif msgID == C.RANGE_FAILED:
-            expectedMsgId = C.POLL_ACK
-            transmitPoll()
-            noteActivity()
+    # if receivedAck:
+    #     receivedAck = False
+    #     data = DW1000.getData(LEN_DATA)
+    #     msgID = data[0]    
+    #     if msgID != expectedMsgId:
+    #         expectedMsgId = C.POLL_ACK
+    #         transmitPoll()
+    #         return
+    #     if msgID == C.POLL_ACK:
+    #         timePollAckReceivedTS = DW1000.getReceiveTimestamp()
+    #         expectedMsgId = C.RANGE_REPORT
+    #         # transmit RANGE
+    #         transmitRange()
+    #         noteActivity()
+    #     elif msgID == C.RANGE_REPORT:
+    #         expectedMsgId = C.POLL_ACK
+    #         # transmit POLL
+    #         transmitPoll()
+    #         noteActivity()
+    #     elif msgID == C.RANGE_FAILED:
+    #         expectedMsgId = C.POLL_ACK
+    #         transmitPoll()
+    #         noteActivity()
 
 
 try:

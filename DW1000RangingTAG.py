@@ -167,7 +167,7 @@ try:
     DW1000.registerCallback("handleReceived", handleReceived)
     DW1000.setAntennaDelay(C.ANTENNA_DELAY_RASPI)
 
-    # receiver()
+    receiver()
     transmitPoll()
     noteActivity()
     while 1:

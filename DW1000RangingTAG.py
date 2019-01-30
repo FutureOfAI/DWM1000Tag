@@ -7,6 +7,7 @@ It requires the following modules: DW1000, DW1000Constants and monotonic.
 import DW1000
 import monotonic
 import DW1000Constants as C
+import RPi.GPIO as GPIO
 
 LEN_DATA = 16
 data = [0] * LEN_DATA
@@ -148,8 +149,11 @@ def loop():
 
 
 try:
+    PIN_RST = 17
     PIN_IRQ = 19
-    PIN_SS = 16
+    PIN_SS = 27
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(PIN_RST, GPIO.IN)
     DW1000.begin(PIN_IRQ)
     DW1000.setup(PIN_SS)
     print("DW1000 initialized")

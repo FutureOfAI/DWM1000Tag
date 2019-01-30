@@ -129,13 +129,14 @@ def loop():
 
     if receivedAck:
         receivedAck = False
-        # data = DW1000.getData(LEN_DATA)
-        # msgID = data[0]
-        print ("Rcved")
+        data = DW1000.getData(LEN_DATA)
+        msgID = data[0]
+        if msgID == 25:
+            print ("An25 Rcved")
     #     if msgID != expectedMsgId:
     #         expectedMsgId = C.POLL_ACK
-    #         transmitPoll()
-    #         return
+            transmitPoll()
+            # return
     #     if msgID == C.POLL_ACK:
     #         timePollAckReceivedTS = DW1000.getReceiveTimestamp()
     #         expectedMsgId = C.RANGE_REPORT

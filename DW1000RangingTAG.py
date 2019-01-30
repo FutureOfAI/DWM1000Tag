@@ -111,14 +111,14 @@ def transmitRange():
 
 def loop():
     global sentAck, receivedAck, data, timePollAckReceivedTS, timePollSentTS, timeRangeSentTS, expectedMsgId
-    if (sentAck == False and receivedAck == False):
-        if ((millis() - lastActivity) > C.RESET_PERIOD):
-            # initial transmit POLL
-            resetInactive()
-        return
+    # if (sentAck == False and receivedAck == False):
+    #     if ((millis() - lastActivity) > C.RESET_PERIOD):
+    #         # initial transmit POLL
+    #         resetInactive()
+    #     return
 
-    if sentAck:
-        print ("Sented")
+    # if sentAck:
+    #     print ("Sented")
         # sentAck = False
         # msgID = data[0]      
         # if msgID == C.POLL:
@@ -127,10 +127,11 @@ def loop():
         #     timeRangeSentTS = DW1000.getTransmitTimestamp()
         #     noteActivity()
 
-    # if receivedAck:
-    #     receivedAck = False
-    #     data = DW1000.getData(LEN_DATA)
-    #     msgID = data[0]    
+    if receivedAck:
+        receivedAck = False
+        # data = DW1000.getData(LEN_DATA)
+        # msgID = data[0]
+        print ("Rcved")
     #     if msgID != expectedMsgId:
     #         expectedMsgId = C.POLL_ACK
     #         transmitPoll()
@@ -169,7 +170,7 @@ try:
     DW1000.setAntennaDelay(C.ANTENNA_DELAY_RASPI)
 
     receiver()
-    transmitPoll()
+    # transmitPoll()
     noteActivity()
     while 1:
         loop()

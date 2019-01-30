@@ -21,7 +21,7 @@ timeRangeSentTS = 0
 timePollAckReceivedTS = 0
 REPLY_DELAY_TIME_US = 7000
 # The polling range frequency defines the time interval between every distance poll in milliseconds. Feel free to change its value. 
-POLL_RANGE_FREQ = 1000 # the distance between the tag and the anchor will be estimated every second.
+POLL_RANGE_FREQ = 100 # the distance between the tag and the anchor will be estimated every second.
 
 
 

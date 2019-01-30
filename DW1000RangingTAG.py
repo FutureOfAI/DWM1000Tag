@@ -139,11 +139,11 @@ def loop():
             return
         if msgID == C.POLL_ACK:
             print ("POLLACK Rcved")
-            # timePollAckReceivedTS = DW1000.getReceiveTimestamp()
+            timePollAckReceivedTS = DW1000.getReceiveTimestamp()
     #         expectedMsgId = C.RANGE_REPORT
-    #         # transmit RANGE
-    #         transmitRange()
-    #         noteActivity()
+            # transmit RANGE
+            transmitRange()
+            noteActivity()
     #     elif msgID == C.RANGE_REPORT:
     #         expectedMsgId = C.POLL_ACK
     #         # transmit POLL

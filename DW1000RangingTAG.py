@@ -144,7 +144,8 @@ def loop():
             # transmit RANGE
             transmitRange()
             noteActivity()
-    #     elif msgID == C.RANGE_REPORT:
+        elif msgID == C.RANGE_REPORT:
+            print ("Ranging Finished")
     #         expectedMsgId = C.POLL_ACK
     #         # transmit POLL
     #         transmitPoll()

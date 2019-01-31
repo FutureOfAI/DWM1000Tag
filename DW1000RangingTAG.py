@@ -111,11 +111,13 @@ def transmitRange():
 
 def loop():
     global sentAck, receivedAck, data, timePollAckReceivedTS, timePollSentTS, timeRangeSentTS, expectedMsgId
-    # if (sentAck == False and receivedAck == False):
+    if (sentAck == False and receivedAck == False):
     #     if ((millis() - lastActivity) > C.RESET_PERIOD):
     #         # initial transmit POLL
     #         resetInactive()
-    #     return
+        receiver()
+        noteActivity()
+        return
 
     if sentAck:
     #     print ("Sented")
@@ -146,8 +148,8 @@ def loop():
             # transmit RANGE
             transmitRange()
             noteActivity()
-        # elif msgID == C.RANGE_REPORT:
-        #     print ("Rang Finished")
+        elif msgID == C.RANGE_REPORT:
+            print ("Rang Finished")
     #         expectedMsgId = C.POLL_ACK
     #         # transmit POLL
     #         transmitPoll()

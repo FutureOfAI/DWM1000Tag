@@ -7,7 +7,7 @@ It requires the following modules: DW1000, DW1000Constants and monotonic.
 import DW1000
 import monotonic
 import DW1000Constants as C
-
+import RPi.GPIO as GPIO
 
 lastActivity = 0
 expectedMsgId = C.POLL
@@ -173,6 +173,9 @@ def loop():
 
 
 try:    
+    PIN_RST = 17
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(PIN_RST, GPIO.IN)
     PIN_IRQ = 19
     PIN_SS = 16
     DW1000.begin(PIN_IRQ)

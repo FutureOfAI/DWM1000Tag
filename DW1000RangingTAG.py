@@ -112,15 +112,11 @@ def transmitRange():
 def loop():
     global sentAck, receivedAck, data, timePollAckReceivedTS, timePollSentTS, timeRangeSentTS, expectedMsgId
     if (sentAck == False and receivedAck == False):
-    #     if ((millis() - lastActivity) > C.RESET_PERIOD):
-    #         # initial transmit POLL
-    #         resetInactive()
         receiver()
         noteActivity()
         return
 
     if sentAck:
-    #     print ("Sented")
         sentAck = False
         msgID = data[0]
         if msgID == C.POLL:
@@ -137,28 +133,16 @@ def loop():
         msgID = data[0]
         if msgID == 25:
             print ("An25 Rcved")
-    #     if msgID != expectedMsgId:
-    #         expectedMsgId = C.POLL_ACK
             transmitPoll()
             return
         if msgID == C.POLL_ACK:
             print ("POLLACK Rcved")
             timePollAckReceivedTS = DW1000.getReceiveTimestamp()
-    #         expectedMsgId = C.RANGE_REPORT
             # transmit RANGE
             transmitRange()
             noteActivity()
         elif msgID == C.RANGE_REPORT:
             print ("Rang Finished")
-    #         expectedMsgId = C.POLL_ACK
-    #         # transmit POLL
-    #         transmitPoll()
-    #         noteActivity()
-    #     elif msgID == C.RANGE_FAILED:
-    #         expectedMsgId = C.POLL_ACK
-    #         transmitPoll()
-    #         noteActivity()
-
 
 try:
     PIN_RST = 17

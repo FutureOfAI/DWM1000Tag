@@ -112,10 +112,10 @@ def transmitRange():
 def loop():
     global sentAck, receivedAck, data, timePollAckReceivedTS, timePollSentTS, timeRangeSentTS, expectedMsgId
 
-    if (sentAck == False and receivedAck == False):
-        receiver()
-        # noteActivity()
-        return
+    # if (sentAck == False and receivedAck == False):
+    #     receiver()
+    #     # noteActivity()
+    #     return
 
     if sentAck:
         sentAck = False

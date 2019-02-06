@@ -116,16 +116,16 @@ def loop():
     #     noteActivity()
     #     return
 
-    if sentAck:
-        sentAck = False
-        msgID = data[0]
-        if msgID == C.POLL:
-            print ("POLL Sented")
-            # timePollSentTS = DW1000.getTransmitTimestamp()
-        elif msgID == C.RANGE:
-            print ("RANGE Sented")
-            # timeRangeSentTS = DW1000.getTransmitTimestamp()
-            noteActivity()
+    # if sentAck:
+    #     sentAck = False
+    #     msgID = data[0]
+    #     if msgID == C.POLL:
+    #         print ("POLL Sented")
+    #         # timePollSentTS = DW1000.getTransmitTimestamp()
+    #     elif msgID == C.RANGE:
+    #         print ("RANGE Sented")
+    #         # timeRangeSentTS = DW1000.getTransmitTimestamp()
+    #         noteActivity()
 
     if receivedAck:
         receivedAck = False
@@ -133,16 +133,16 @@ def loop():
         msgID = data[0]
         if msgID == 25:
             print ("An25 Rcved")
-            transmitPoll()
-            return
-        if msgID == C.POLL_ACK:
-            print ("POLLACK Rcved")
-            # timePollAckReceivedTS = DW1000.getReceiveTimestamp()
-            # transmit RANGE
-            transmitRange()
-            noteActivity()
-        elif msgID == C.RANGE_REPORT:
-            print ("Rang Finished")
+        #     transmitPoll()
+        #     return
+        # if msgID == C.POLL_ACK:
+        #     print ("POLLACK Rcved")
+        #     # timePollAckReceivedTS = DW1000.getReceiveTimestamp()
+        #     # transmit RANGE
+        #     transmitRange()
+        #     noteActivity()
+        # elif msgID == C.RANGE_REPORT:
+        #     print ("Rang Finished")
 
 try:
     PIN_RST = 17

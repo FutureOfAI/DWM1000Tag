@@ -116,11 +116,11 @@ def loop():
     #     noteActivity()
     #     return
 
-    # if sentAck:
-    #     sentAck = False
-    #     msgID = data[0]
-    #     if msgID == C.POLL:
-    #         print ("POLL Sented")
+    if sentAck:
+        sentAck = False
+        msgID = data[0]
+        if msgID == C.POLL:
+            print ("POLL Sented")
     #         # timePollSentTS = DW1000.getTransmitTimestamp()
     #     elif msgID == C.RANGE:
     #         print ("RANGE Sented")
@@ -133,8 +133,8 @@ def loop():
         msgID = data[0]
         if msgID == 25:
             print ("An25 Rcved")
-        #     transmitPoll()
-        #     return
+            transmitPoll()
+            return
         # if msgID == C.POLL_ACK:
         #     print ("POLLACK Rcved")
         #     # timePollAckReceivedTS = DW1000.getReceiveTimestamp()

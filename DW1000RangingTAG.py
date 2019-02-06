@@ -111,10 +111,11 @@ def transmitRange():
 
 def loop():
     global sentAck, receivedAck, data, timePollAckReceivedTS, timePollSentTS, timeRangeSentTS, expectedMsgId
-    # if (sentAck == False and receivedAck == False):
-    #     receiver()
-    #     noteActivity()
-    #     return
+
+    if (sentAck == False and receivedAck == False):
+        receiver()
+        # noteActivity()
+        return
 
     if sentAck:
         sentAck = False
@@ -161,7 +162,7 @@ try:
     DW1000.setAntennaDelay(C.ANTENNA_DELAY_RASPI)
 
     receiver()
-    noteActivity()
+    # noteActivity()
     while 1:
         loop()
 
